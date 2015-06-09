@@ -6,27 +6,19 @@ require(__DIR__ . '/lib/bootstrap.php');
 class LibraryTest extends LibraryTestCase {
 
   public function testRoot() {
-
     $this->assertEquals($this->library->root(), $this->root);
-
   }
 
   public function testIsWritable() {
-
     $this->assertTrue($this->library->isWritable());
-
   }
 
   public function testDatabase() {
-
     $this->assertInstanceOf('Database', $this->library->database());
-
   }
 
   public function testIndex() {
-
     $this->assertInstanceOf('Database\\Query', $this->library->index());    
-
   }
 
   public function testFolder() {
@@ -95,6 +87,21 @@ class LibraryTest extends LibraryTestCase {
 
     // and check again
     $this->assertFalse($this->library->find($id));
+
+  }
+
+  public function testRebuild() {
+
+    $a = $this->library->create('test');
+    $b = $this->library->create('test');
+
+    // delete the index
+    f::remove($this->library->root() . DS . 'library.sqlite');
+
+    $this->library->rebuild();
+
+    $this->assertEquals(2, $this->library->count());
+    $this->assertInstanceOf('Library\\Item', $this->library->find($b->id()));
 
   }
 

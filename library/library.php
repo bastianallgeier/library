@@ -102,7 +102,13 @@ class Library {
       'page', 
       'search', 
       'where', 
-      'count'
+      'count',
+      'year',
+      'month',
+      'day',
+      'years',
+      'months',
+      'days',
     );
 
     if(in_array($method, $queries)) {
@@ -148,7 +154,7 @@ class Library {
         foreach($month->children() as $day) {
           foreach($day->children() as $item) {
             $data = data::read($item->root() . DS . 'item.yaml');
-            $item = new Item($this, $data); 
+            $item = new Item($this, $data['type'], $data); 
             $item->store();
           }
         }

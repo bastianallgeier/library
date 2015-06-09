@@ -3,6 +3,7 @@
 namespace Library;
 
 use Library;
+use Exception;
 
 class Query extends \Database\Query {
 
@@ -43,6 +44,53 @@ class Query extends \Database\Query {
 
   public function type($type) {
     return $this->where('type', '=', $type);    
+  }
+
+  public function day($day) {
+
+    if(!preg_match('!^[\d]{4}-[\d]{2}-[\d]{2}$!', $day)) {
+      throw new Exception('Invalid day format. Must be YYYY-MM-DD');
+    }
+
+    $start = strtotime($day);
+    $end   = strtotime('+1 day', $start);
+    return $this->where('created', '>=', $start)->where('created', '<', $end);    
+
+  }
+
+  public function month($month) {
+
+    if(!preg_match('!^[\d]{4}-[\d]{2}$!', $month)) {
+      throw new Exception('Invalid month format. Must be YYYY-MM');
+    }
+
+    $start = strtotime($month . '-01');
+    $end   = strtotime('+1 month', $start);
+    return $this->where('created', '>=', $start)->where('created', '<', $end);    
+
+  }
+
+  public function year($year) {
+
+    if(!preg_match('!^[\d]{4}$!', $year)) {
+      throw new Exception('Invalid year. Must be YYYY');
+    }
+
+    $start = strtotime($year . '-01-01');
+    $end   = strtotime('+1 year', $start);
+    return $this->where('created', '>=', $start)->where('created', '<', $end);    
+  }
+
+  public function years() {
+    return $this->library->database->query('select distinct strftime("%Y", created, "unixepoch") as year from items')->pluck('year');
+  }
+
+  public function months() {
+    return $this->library->database->query('select distinct strftime("%Y-%m", created, "unixepoch") as month from items')->pluck('month');
+  }
+
+  public function days() {
+    return $this->library->database->query('select distinct strftime("%Y-%m-%d", created, "unixepoch") as day from items')->pluck('day');
   }
 
   public function status($status) {

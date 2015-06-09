@@ -2,6 +2,7 @@
 
 use Library\Item;
 use Library\Query;
+use Library\Api;
 
 class Library {
 
@@ -78,7 +79,7 @@ class Library {
   }
 
   public function item($data) {
-    return new Item($this, $data);
+    return new Item($this, $data['type'], $data);
   }
 
   public function delete($id) {
@@ -89,33 +90,27 @@ class Library {
     }
   }
 
-  // queries
-  public function first() {
-    return $this->index->first();
-  }
+  public function __call($method, $args) {
 
-  public function type($type) {
-    return $this->index->type($type);
-  }
+    // allowed query calls
+    $queries = array(
+      'status', 
+      'type', 
+      'find', 
+      'first',
+      'all', 
+      'page', 
+      'search', 
+      'where', 
+      'count'
+    );
 
-  public function status($status) {
-    return $this->index->status($status);
-  }
+    if(in_array($method, $queries)) {
+      return call(array($this->index, $method), $args);
+    } else {
+      throw new Exception('Invalid library method');
+    }
 
-  public function find($id) {
-    return $this->index->where('id', '=', $id)->one(); 
-  }
-
-  public function all() {
-    return $this->index->all(); 
-  }
-
-  public function page($page, $limit) {
-    return $this->index->page($page, $limit); 
-  }
-
-  public function search($query, $columns = array()) {
-    return $this->index->search($query, $columns); 
   }
 
   public function setup() {

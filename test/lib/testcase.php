@@ -24,7 +24,7 @@ class LibraryTestCase extends PHPUnit_Framework_TestCase {
   }
 
   public function item() {
-    return new Library\Item($this->library, array('type' => 'test'));
+    return new Library\Item($this->library, 'test');
   }
 
 }

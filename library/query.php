@@ -37,6 +37,10 @@ class Query extends \Database\Query {
 
   }
 
+  public function find($id) {
+    return $this->where('id', '=', $id)->one();     
+  }
+
   public function type($type) {
     return $this->where('type', '=', $type);    
   }

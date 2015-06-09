@@ -8,20 +8,15 @@ class ItemTest extends LibraryTestCase {
 
   /**
    * @expectedException Exception
-   * @expectedExceptionMessage Missing required field: type
+   * @expectedExceptionMessage Invalid value type
    */
   public function testCreateItemWithMissingType() {
-    $item = new Item($this->library, array());
+    $item = new Item($this->library, null);
   }
 
   public function testSuccessfulItemCreation() {
-
-    $item = new Item($this->library, array(
-      'type' => 'todo',
-    ));    
-
+    $item = new Item($this->library, 'todo');    
     $this->assertInstanceOf('Library\\Item', $item);
-
   }
 
   /**
@@ -29,9 +24,8 @@ class ItemTest extends LibraryTestCase {
    * @expectedExceptionMessage Invalid id
    */
   public function testCreateItemWithInvalidShortId() {
-    $item = new Item($this->library, array(
+    $item = new Item($this->library, 'todo', array(
       'id'   => 'abc',
-      'type' => 'todo',
     ));
   }
 
@@ -40,9 +34,8 @@ class ItemTest extends LibraryTestCase {
    * @expectedExceptionMessage Invalid id
    */
   public function testCreateItemWithInvalidCharInId() {
-    $item = new Item($this->library, array(
-      'id'   => '#abGuMgoNV5HfbRZbJFCIbDHMXmATJ8d',
-      'type' => 'todo',
+    $item = new Item($this->library, 'todo', array(
+      'id' => '#abGuMgoNV5HfbRZbJFCIbDHMXmATJ8d'
     ));
   }
 
@@ -54,9 +47,7 @@ class ItemTest extends LibraryTestCase {
   public function testCreateItemWithInvalidCharsInType() {
 
     // not a string
-    $item = new Item($this->library, array(
-      'type' => 1,
-    ));
+    $item = new Item($this->library, 1);
 
   }
 
@@ -65,11 +56,7 @@ class ItemTest extends LibraryTestCase {
    * @expectedExceptionMessage Invalid type
    */
   public function testCreateItemWithInvalidShortType() {
-
-    $item = new Item($this->library, array(
-      'type' => 't',
-    ));
-
+    $item = new Item($this->library, 't');
   }
 
   /**
@@ -77,11 +64,7 @@ class ItemTest extends LibraryTestCase {
    * @expectedExceptionMessage Invalid type
    */
   public function testCreateItemWithInvalidLongType() {
-
-    $item = new Item($this->library, array(
-      'type' => 'taskdasdhkajhsdkjahskjdhakjsdhkjahsdkjahsdk',
-    ));
-
+    $item = new Item($this->library, 'taskdasdhkajhsdkjahskjdhakjsdhkjahsdkjahsdk');
   }
 
   /**
@@ -89,8 +72,7 @@ class ItemTest extends LibraryTestCase {
    * @expectedExceptionMessage Invalid status
    */
   public function testCreateItemWithInvalidStatus() {
-    $item = new Item($this->library, array(
-      'type'   => 'todo',
+    $item = new Item($this->library, 'todo', array(
       'status' => 'abc'
     ));
   }
@@ -101,13 +83,11 @@ class ItemTest extends LibraryTestCase {
    */
   public function testCreateItemWithInvalidUpdatedTimestamp() {
 
-    $item = new Item($this->library, array(
-      'type'    => 'todo',
+    $item = new Item($this->library, 'todo', array(
       'updated' => strtotime('1900-01-01')
     ));
 
-    $item = new Item($this->library, array(
-      'type'    => 'todo',
+    $item = new Item($this->library, 'todo', array(
       'updated' => strtotime('2900-01-01')
     ));
 
@@ -119,18 +99,15 @@ class ItemTest extends LibraryTestCase {
    */
   public function testCreateItemWithInvalidCreatedTimestamp() {
 
-    $item = new Item($this->library, array(
-      'type'    => 'todo',
+    $item = new Item($this->library, 'todo', array(
       'created' => strtotime('1900-01-01')
     ));
 
-    $item = new Item($this->library, array(
-      'type'    => 'todo',
+    $item = new Item($this->library, 'todo', array(
       'created' => strtotime('2900-01-01')
     ));
 
-    $item = new Item($this->library, array(
-      'type'    => 'todo',
+    $item = new Item($this->library, 'todo', array(
       'created' => time() + 10
     ));
 

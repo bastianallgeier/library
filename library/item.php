@@ -19,13 +19,16 @@ class Item {
 
   protected $library;
 
-  protected $old = array();
+  protected $old  = array();
   protected $data = array();
 
-  public function __construct(Library $library, $data) {
+  public function __construct(Library $library, $type, $data = array()) {
 
     // set the parent library object
     $this->library = $library;
+
+    // set the type
+    $this->type = $type;
 
     // add all fields
     $this->set($data);
@@ -97,22 +100,8 @@ class Item {
   }
 
   static public function create(Library $library, $type, $data = array()) {
-
-    // add the id to the array
-    $data['id']      = $library->id();
-    $data['type']    = $type;
-    $data['status']  = 'draft';
-    $data['updated'] = time();
-
-    // check for an exisiting creation timestamp
-    if(empty($data['created'])) {
-      $data['created'] = time();      
-    }
-
-    $item = new static($library, $data);
-
+    $item = new static($library, $type, $data);
     return $item->store();
-
   }
 
   public function __set($key, $value) {

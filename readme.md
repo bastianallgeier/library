@@ -12,6 +12,27 @@ The Library has no schema. You can add any number of fields per item and individ
 
 ***
 
+## Table of contents
+
+- [Philosophy](#philosophy)
+- [Folder structure](#folder-structure)
+- [Sqlite index](#sqlite-index)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Getting started](#getting-started)
+- [Creating items](#creating-items)
+- [Item anatomy](#item-anatomy)
+- [Item getters](#item-getters)
+- [Additional item methods](#additional-item-methods)
+- [Updates](#updates)
+- [Queries](#queries)
+- [Attachments](#attachments)
+- [Deleting items](#deleting-items)
+- [Roadmap](#roadmap)
+
+
+***
+
 ## Philosophy
 
 - practical 
@@ -374,6 +395,7 @@ $library->type('article')->delete();
 - more docs
 - "between" query method for dates
 - maybe geo queries
+- Travis setup
 
 ***
 

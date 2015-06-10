@@ -326,8 +326,8 @@ $documents = $item->documents();
 ```
 
 All methods above return a Kirby Toolkit Collection of Media objects:
-<http://getkirby.com/docs/toolkit/api#collection>
-<http://getkirby.com/docs/toolkit/api#media>
+- <http://getkirby.com/docs/toolkit/api#collection>
+- <http://getkirby.com/docs/toolkit/api#media>
 
 ### Deleting an attachment
 

@@ -91,6 +91,22 @@ $item = $library->create('article', array(
 
 *** 
 
+## Item anatomy
+
+Each item is stored in its own folder. The path to the folder follows the format YYYY/MM/DD/ID. The creation date is used herefor. Each item has the following default fields: 
+
+```
+- id (unique 32 char alphanumeric string)
+- status (draft|public|private)
+- type (can be any alphanumeric string between 2 and 32 characters)
+- created (unix timestamp)
+- updated (unix timestamp)
+```
+
+Additionally you can add any number of fields to an item.
+
+*** 
+
 ## Item getters
 
 ```php

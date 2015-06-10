@@ -8,6 +8,8 @@ It can handle a couple thousand entries without any problems. It's perfect for s
 
 The Library is also a perfect combination of any kind of text-based data combined with attached files. Each stored item can have any number of additional images, documents, videos, etc. attached. 
 
+The Library has no schema. You can add any number of fields per item and individual items can have different sets of fields. 
+
 ***
 
 ## Philosophy

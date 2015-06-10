@@ -52,6 +52,14 @@ The index is stored in the main directory of the library and can be removed at a
 
 ***
 
+## Requirements
+
+- PHP 5.4+ 
+- sqlite
+- mbstring
+
+***
+
 ## Installation
 
 ```
@@ -285,6 +293,14 @@ $item->delete();
 ```php
 $library->type('article')->delete();
 ```
+
+***
+
+## Roadmap 
+
+- more docs
+- "between" query method for dates
+- maybe geo queries
 
 ***
 

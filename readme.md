@@ -4,7 +4,7 @@
 
 It's easy to setup and use. It's intended for cheap shared hosting, small virtual servers, your NAS or RaspberryPi and similar thingies where a node.js or Rails based solution is too much or simply not installable. 
 
-It can handle a couple thousand entries without any problems. It's perfect for small personal single-user applications: self-hosted publishing solutions, self-hosted photo albums, online diaries, blogs, todo apps — you name it. 
+It can handle a couple thousand entries without any problems. It's perfect for small personal single-user applications: a self-hosted photo album, a tweet backup, a personal checkins db, an address book, a personal invoice app, a book inventory, a todo app — you name it. 
 
 The Library is also a perfect combination of any kind of text-based data combined with attached files. Each stored item can have any number of additional images, documents, videos, etc. attached. 
 

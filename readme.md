@@ -89,6 +89,59 @@ $item = $library->create('article', array(
 ));
 ```
 
+*** 
+
+## Item getters
+
+```php
+// standard getters
+$item->id();
+$item->status();
+$item->type();
+$item->created();
+$item->updated();
+
+// magic getters for your additional fields
+$item->title();
+$item->text();
+// etc. 
+```
+
+*** 
+
+## Additional item methods
+
+```php
+// i.e. 2012/12/12/5gWsOULCwbkInoVQbJ0MxcjybX5hfkv9
+$item->path();
+// i.e. 2012
+$item->path('year');
+// i.e. 2012/12
+$item->path('month');
+// i.e. 2012/12/12
+$item->path('day');
+
+// i.e. /var/www/library/2012/12/12/5gWsOULCwbkInoVQbJ0MxcjybX5hfkv9
+$item->root();
+// i.e. /var/www/library/2012
+$item->root('year');
+// i.e. /var/www/library/2012/12
+$item->root('month');
+// i.e. /var/www/library/2012/12/12
+$item->root('day');
+
+// Kirby toolkit folder object 
+// http://getkirby.com/docs/toolkit/api#folder
+$item->folder();
+
+// returns an associative array of all item fields
+$item->toArray();
+
+// checks if the item exists
+$item->exists();
+```
+Check the following examples for more specific stuff. 
+
 ***
 
 ## Updates
@@ -271,6 +324,10 @@ $videos = $item->videos();
 // all documents
 $documents = $item->documents();
 ```
+
+All methods above return a Kirby Toolkit Collection of Media objects:
+<http://getkirby.com/docs/toolkit/api#collection>
+<http://getkirby.com/docs/toolkit/api#media>
 
 ### Deleting an attachment
 

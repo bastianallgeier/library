@@ -396,6 +396,7 @@ $library->type('article')->delete();
 - "between" query method for dates
 - maybe geo queries
 - Travis setup
+- Composer support
 
 ***
 

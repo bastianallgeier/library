@@ -77,7 +77,7 @@ Make sure the library folder is writable. Otherwise the library will not be able
 ```php
 $item = $library->create('article', array(
   'title' => 'Hello World',
-  'text' => 'Lorem ipsum…'
+  'text'  => 'Lorem ipsum…'
 ));
 ```
 
@@ -88,7 +88,8 @@ $item = $library->create('article', array(
 ```php 
 $item->update(array(
   'title' => 'New title',
-  'text' => 'Lorem ipsum dolor sit amet'
+  'text'  => 'Lorem ipsum dolor sit amet', 
+  'date'  => time()
 ));
 ```
 
@@ -115,7 +116,7 @@ $item->store();
 ```php
 $item->set(array(
   'title' => 'New title',
-  'text' => 'Lorem ipsum dolor sit amet'
+  'text'  => 'Lorem ipsum dolor sit amet'
 ));
 
 $item->store();

@@ -243,6 +243,22 @@ $item->attach('/some/path/image.jpg');
 $item->attach('/some/path/image.jpg', 'myimage.jpg');
 ```
 
+### Fetching attachments for an item
+
+```php 
+// all files
+$files  = $item->files();
+
+// all images
+$images = $item->images();
+
+// all videos
+$videos = $item->videos();
+
+// all documents
+$documents = $item->documents();
+```
+
 ### Deleting an attachment
 
 ```php

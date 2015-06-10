@@ -68,6 +68,8 @@ require('library/bootstrap.php');
 $library = new Library(__DIR__ . '/mylibrary');
 ```
 
+Make sure the library folder is writable. Otherwise the library will not be able to store any data for you.
+
 ***
 
 ## Creating items

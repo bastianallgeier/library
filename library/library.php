@@ -109,6 +109,7 @@ class Library {
       'years',
       'months',
       'days',
+      'order'
     );
 
     if(in_array($method, $queries)) {

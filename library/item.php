@@ -106,6 +106,9 @@ class Item {
 
   public function __set($key, $value) {
 
+    // convert nulls to empty strings
+    if(is_null($value)) $value = '';
+
     // avoid invalid values
     if(!is_scalar($value)) {
       throw new Exception('Invalid value type');

@@ -400,6 +400,12 @@ $library->type('article')->delete();
 
 ***
 
+## License
+
+<http://www.opensource.org/licenses/mit-license.php>
+
+***
+
 ## Author
 
 Bastian Allgeier 

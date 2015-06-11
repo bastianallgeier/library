@@ -29,7 +29,8 @@ The Library has no schema. You can add any number of fields per item and individ
 - [Attachments](#attachments)
 - [Deleting items](#deleting-items)
 - [Roadmap](#roadmap)
-
+- [License](#license)
+- [Author](#author)
 
 ***
 

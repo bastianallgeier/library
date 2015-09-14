@@ -8,7 +8,7 @@ class ItemTest extends LibraryTestCase {
 
   /**
    * @expectedException Exception
-   * @expectedExceptionMessage Invalid value type
+   * @expectedExceptionMessage Missing required field: type
    */
   public function testCreateItemWithMissingType() {
     $item = new Item($this->library, null);
